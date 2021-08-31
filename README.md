@@ -1,3 +1,30 @@
+-------------------
+
+### Forked for WLCR and added flexible features
+
+Added ability to add project specific engine specs - inspired by issue with Gatsby versions
+
+To do this add an `engines.spec.json` file in the root. In this file add an array of engine deps, eg
+```
+[{
+  "package": "gatsby",
+  "versionCheck": "gatsby --v"
+}]
+```
+Next in package.json add an `engines` block and specify requirements. Eg:
+```
+"engines": {
+  "node": "16.8.0",
+  "gatsby": ">3.0.0"
+}
+```
+
+Recommended usage: add pre-scripts like `{"prestart": "check-engine"}` or `{"prebuild": "check-engine"}`
+
+See below for og details
+
+------------------
+
 # check-engine  [![Build Status](https://travis-ci.org/mohlsen/check-engine.svg?branch=master)](https://travis-ci.org/mohlsen/check-engine)
 A utility to check your [package.json engines](https://docs.npmjs.com/files/package.json#engines) in Node.js projects. Inspired by the [Thali Project][thali] in [validateBuildEnvironment.js][thalicode]
 
